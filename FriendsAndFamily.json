@@ -1,0 +1,54 @@
+{
+  "people": [
+    {
+      "name": "Joseph",
+      "lname": "Musser",
+      "relation": "Brother"
+    },
+    {
+      "name": "James",
+      "lname": "Musser",
+      "relation": "Brother"
+    },
+    {
+      "name": "Helen",
+      "lname": "Musser",
+      "relation": "Sister"
+    },
+    {
+      "name": "James",
+      "lname": "Musser",
+      "relation": "Father"
+    },
+    {
+      "name": "Doug",
+      "lname": "Lund",
+      "relation": "Friend"
+    },
+    {
+      "name": "George",
+      "lname": "Musser",
+      "relation": "Son"
+    },
+    {
+      "name": "Amy",
+      "lname": "Musser",
+      "relation": "Friend"
+    },
+    {
+      "name": "Jared",
+      "lname": "Musser",
+      "relation": "Brother"
+    },
+    {
+      "name": "Rae",
+      "lname": "Peterson",
+      "relation": "Friend"
+    },
+    {
+      "name": "Zach",
+      "lname": "Gundry",
+      "relation": "Friend"
+    }
+  ]
+}
