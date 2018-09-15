@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+<head>
+  <title>Advanced Javascript Assignments - Musser</title>
+</head>
+
+<body bgcolor="aqua">
+  <center>
+    <h1>Meet Me!</h1>
+
+    <p id="main">This is where my description will appear</p>
+
+    <script>
+      var info = {
+        "Name": "Daniel",
+        "Age": "28",
+        "Married": true,
+        "Classes": [
+          2020,
+          2470
+        ],
+        "Hobbies": {
+          "Music": "Playing Violin and Guitar",
+          "Coding": "This class is a good example..."
+        }
+      };
+
+      function myFunction(arg) {
+        var content = "<p>Hi, my name is " + arg.Name + '</p>';
+
+        content += "<p>I am " + arg.Age + ' years old.</p>';
+
+        if (arg.Married == true) {
+          content += '<p>I am married</p>';
+        } else {
+          content += '<p>I am not married</p>';
+        }
+
+        content += '<p>My favorite class is is: CSIS ' + arg.Classes[1] + '</p>';
+
+        content += '<p><b>My Hobbies are:</b></p>';
+        content += '<ul><li>' + arg.Hobbies.Music + '</li>';
+        content += '<li>' + arg.Hobbies.Coding + '</li></ul>';
+
+        //console.log(content + " is what is in content");
+
+        document.getElementById("main").innerHTML = content;
+      }
+
+      myFunction(info);
+    </script>
+  </center>
+</body>
+
+</html>
+
+<!-- This will make an object with these data objects in it
+
+Name(string)
+
+Age(int)
+
+Married(boolean)
+
+Classes(Array of class numbers)
+
+Hobbies(Objects with values "hobbyname": "short description")
+
+This web site will display all the information that will tell the user your name,
+
+then age, if you are married, then you will list your favorite class, and one hobby with a description.-->
