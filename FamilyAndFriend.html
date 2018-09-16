@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <title>Advanced Javascript Assignments - Musser</title>
+</head>
+
+<body bgcolor="aqua">
+  <center>
+    <h1>Meet the people I know!</h1>
+
+    <p id="firstP">Choose what type of my relationships should be displayed in the dropdown</p>
+    <select name="relation" id="relation_dropdown"></select>
+    <button id="filterRelationship">Filter by Relationship Dropdown</button>
+
+    <p>Or you can filter the people I know by typing in a first or last name below (names are case sensitive)</p>
+    <input type="text" id="nameSearchBox">
+    <button id="nameFilter">Filter by Typed Name</button>
+
+    <p>Or you can search using both the relationship dropdown and the name text field</p>
+    <button id="filterNameAndRelation">Filter by Both Name and Relationship</button>
+
+    <p>Or you can just see the whole list!</p>
+    <button id="displayEverything">See Everyone!</button>
+
+    <p>Below are the selected family members for your viewing pleasure</p>
+    <p id="main"></p>
+
+    <script>
+
+    let dropdown = $('#relation_dropdown');
+    let main = $('#main');
+    const url = 'https://spandan22.github.io/TheCatCoder.AdvancedJavascript.github.io/FriendsAndFamily.json';
+
+
+    dropdown.empty();
+
+    dropdown.append('<option selected="true" disabled>Choose Relationship</option>');
+    dropdown.append('<option>Brother</option>');
+    dropdown.append('<option>Sister</option>');
+    dropdown.append('<option>Father</option>');
+    dropdown.append('<option>Son</option>');
+    dropdown.append('<option>Friend</option>');
+    dropdown.prop('selectedIndex', 0);
+
+
+
+    $("#filterRelationship").click(function (e) {
+        currentSelection = $("#relation_dropdown").val();
+        var applicableContent = '';
+
+        $.getJSON(url, function(data) {
+
+          for (var i = 0; i < data.people.length; i++) {
+            if (data.people[i].relation == currentSelection) {
+              applicableContent += '<p>' + data.people[i].name
+              + ' ' + data.people[i].lname + ' '
+              + 'is my ' + data.people[i].relation + '</p>';
+            }
+          }
+          document.getElementById("main").innerHTML = applicableContent;
+        });
+
+
+        console.log(currentSelection);
+    });
+
+    $("#nameFilter").click(function (e) {
+        currentSelection = $("#nameSearchBox").val();
+        var applicableContent = '';
+
+        console.log(currentSelection);
+
+        $.getJSON(url, function(data) {
+
+          for (var i = 0; i < data.people.length; i++) {
+            if (data.people[i].name == currentSelection || data.people[i].lname == currentSelection) {
+              applicableContent += '<p>' + data.people[i].name
+              + ' ' + data.people[i].lname + ' '
+              + 'is my ' + data.people[i].relation + '</p>';
+            }
+          }
+          document.getElementById("main").innerHTML = applicableContent;
+        });
+    });
+
+    $("#filterNameAndRelation").click(function (e) {
+        typedName = $("#nameSearchBox").val();
+        selectedRelationship = $("#relation_dropdown").val();
+        var applicableContent = '';
+
+        console.log(typedName);
+
+        $.getJSON(url, function(data) {
+
+          for (var i = 0; i < data.people.length; i++) {
+            if (data.people[i].name == typedName || data.people[i].lname == typedName) {
+              if (data.people[i].relation == selectedRelationship) {
+                applicableContent += '<p>' + data.people[i].name
+                + ' ' + data.people[i].lname + ' '
+                + 'is my ' + data.people[i].relation + '</p>';
+              }
+            }
+          }
+          document.getElementById("main").innerHTML = applicableContent;
+        });
+    });
+
+    $("#displayEverything").click(function (e) {
+        var applicableContent = '';
+
+        $.getJSON(url, function(data) {
+
+          for (var i = 0; i < data.people.length; i++) {
+              applicableContent += '<p>' + data.people[i].name
+              + ' ' + data.people[i].lname + ' '
+              + 'is my ' + data.people[i].relation + '</p>';
+          }
+          document.getElementById("main").innerHTML = applicableContent;
+        });
+    });
+
+    </script>
+
+  </center>
+</body>
+
+</html>

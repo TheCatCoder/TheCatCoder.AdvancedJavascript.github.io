@@ -46,8 +46,18 @@
       "relation": "Friend"
     },
     {
-      "name": "Zach",
-      "lname": "Gundry",
+      "name": "Brandon",
+      "lname": "Bullough",
+      "relation": "Friend"
+    },
+    {
+      "name": "Michelle",
+      "lname": "Bullough",
+      "relation": "Friend"
+    },
+    {
+      "name": "Hunter",
+      "lname": "Jenkins",
       "relation": "Friend"
     }
   ]
