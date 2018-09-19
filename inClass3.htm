@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+        <script>
+            //change on the drop down
+            function drpJSON() {
+                var data_file = "https://spandan22.github.io/TheCatCoder.AdvancedJavascript.github.io/BookJson.json";
+                var http_request = new XMLHttpRequest();
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText);
+
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.
+                        var Title = "";
+                        var Author = "";
+
+                        // Runs when a dropdown is selected
+                        for (var i = 0; i < jsonObj.book.length; i++) {
+                            if (jsonObj.book[i].authorid == document.getElementById("BookSel").value
+                            && document.getElementById("BookSel").value != 0) {
+                              Title = Title + jsonObj.book[i].Title + "<br>";
+                              Author = Author + jsonObj.book[i].Author + "<br>"
+                              var selection = i;
+                              console.log(i);
+                            }
+
+                        }
+                        document.getElementById("Title").innerHTML = Title;
+                        document.getElementById("Author").innerHTML = Author;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+
+            //for the write in element
+            function wrtJSON() {
+
+                var data_file = "https://spandan22.github.io/TheCatCoder.AdvancedJavascript.github.io/BookJson.json";
+                var http_request = new XMLHttpRequest();
+
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText);
+
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.
+                        var Title = "";
+                        var Author = "";
+
+                        for (var i = 0; i < jsonObj.book.length; i++) {
+                          //WRITE JSON AKA the Text Box code
+                          if (jsonObj.book[i].Author.indexOf(document.getElementById("AuthorName").value) > -1
+                                && document.getElementById("AuthorName").value != "") {
+
+                            // console.log(jsonObj.book[i].Author.indexOf(document.getElementById("AuthorName").value) +
+                            // " is the value of of the first compared element and can't be -1");
+
+                            // console.log(document.getElementById("AuthorName").value + " is the second element and can't be empty string");
+
+                            // console.log(Title + " is what's in the Title variable");
+                            // console.log(Author + " is what's in the Author variable");
+
+                            Title = Title + jsonObj.book[i].Title + "<br>";
+                            Author = Author + jsonObj.book[i].Author + "<br>";
+
+                            var selection = i;
+                            // console.log("Write funtion is on index " + i);
+                          }
+                        }
+
+                        document.getElementById("booklist").innerHTML = "";
+                        document.getElementById("Title").innerHTML = Title;
+                        document.getElementById("Author").innerHTML = Author;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+        </script>
+        <title>The Booklist AJAX Exercise</title>
+    </head>
+    <body class="w3-metro-teal"><center>
+        <div class="w3-bar w3-light-grey"><h1>Book Lookup - Musser</h1></div>
+        <div class="w3-container">
+  				<div class="w3-panel">
+            <br><br>
+    				<h3>Use the dropdown and text field below to search the book list</h3>
+        <div class="central">Select a Book Number:
+            <select id='BookSel' onchange ="drpJSON()">
+
+            </select>
+            <br><br>
+            Or Enter a Author: <input type="text" name="AuthorName" id="AuthorName" onkeyup="wrtJSON()">
+            <input type="button" onclick="wrtJSON()" value="Pick">
+        </div>
+        <br>
+        <div class="w3-container">
+        <div class="w3-panel">
+        <table class="w3-table w3-bordered">
+          <!-- <table class="src"> -->
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+            <tr class="w3-hover-blue">
+                <td><div id="Title">None Selected</div></td>
+                <td><div id="Author">None Selected</div></td>
+            </tr>
+            <tr>
+                <td><div id="booklist"></div></td>
+                <!-- booklist doesn't need to exist... -->
+                <td></td>
+            </tr>
+        </table>
+        </div>
+        </div>
+
+        </div>
+        </div>
+
+        <script>
+            var data_file = "https://spandan22.github.io/TheCatCoder.AdvancedJavascript.github.io/BookJson.json";
+            var http_request = new XMLHttpRequest();
+
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Something went wrong
+                        alert("Your browser broke!");
+                    }
+                }
+            }
+            http_request.onreadystatechange = function () {
+                if (http_request.readyState == 4) {
+                    // Javascript function JSON.parse to parse JSON data
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    var text = "<option value='0'>--</option>";
+                    for (var i = 0; i < jsonObj.book.length; i++) {
+                      text = text + "<option value= '" + jsonObj.book[i].authorid
+                        + "'> " + jsonObj.book[i].Title + "</option>";
+                    }
+                    document.getElementById("BookSel").innerHTML = text;
+                }
+            }
+            http_request.open("GET", data_file, true);
+            http_request.send();
+        </script>
+    </body>
+</html>
