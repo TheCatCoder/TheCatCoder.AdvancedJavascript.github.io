@@ -148,7 +148,7 @@
         $('#pictureTitles').html(pictureTitles);
         $('#underSlideContent').html(pictureInfo);
 
-        console.log(slideCount + " is the current slide that slick chose");
+        //console.log(slideCount + " is the current slide that slick chose");
       }
 
       $(document).on('ready', function() {
@@ -156,7 +156,7 @@
         $.getJSON(path, function(json) {
           jsonData = json;
           console.log("Ending AJAX call");
-          // console.log(jsonData.pictures[1].info);
+
           getNextInfo();
         });
 
