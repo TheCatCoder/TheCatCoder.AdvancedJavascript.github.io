@@ -1,0 +1,27 @@
+{
+  "pictures": [{
+      "title": "Playing the Violin",
+      "info": "This is me with the rest of the band that I play in. Violin is one of the instruments that I play in it. I've been playing since I was 16. I mostly play an electric violin, since that's much easier to consistantly amplify to the rest of the band's level"
+    },
+    {
+      "title": "Spending Time with George",
+      "info": "I love spending time with my little guy. He's almost 10 months old now. I love strolling him around, and just being with him in different settings. A child's natural curiosity about everything around them is a great reminder of what it means to discover and learn."
+    },
+    {
+      "title": "Playing the Guitar",
+      "info": "I also play the guitar in my band. I've played guitar since I was 14, and it's probably my favorite instrument. This picture is from one of my band's performances. My wife can be be seen on the left doing the singing in that song."
+    },
+    {
+      "title": "Coding",
+      "info": "I first had an interest in coding about 6 years ago after I watched a programmer compile a program from source on my linux computer. After seeing the magic of how computers turn commands and source code into software that you can interact with, I haven't been able to get enough ever since."
+    },
+    {
+      "title": "Gaming",
+      "info": "I love video games. I probably prefer PC gaming out of everything, but I also have a Wii U that I love to play various Zelda games on. Even though, I prefer PC gaming, I don't commonly use a mouse and keyboard to play; these are the 3 controllers that I use instead."
+    },
+    {
+      "title": "Visiting England",
+      "info": "I'm half joking with this one. Obviously I don't go to England that often because it's very expensive to do that, but my wife Amy, who can be seen in this photo, is from England; so we go there every couple of years. Leeds Castle is what you see in the background."
+    }
+  ]
+}
