@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Template</title>
+
+  <!-- jQuery and CSS CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Responsive design guide here: https://www.w3schools.com/w3css/w3css_responsive.asp -->
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Go here for icon reference: https://www.w3schools.com/icons/icons_reference.asp -->
+
+  <!-- Need to add extra spaces?
+    1. Type "&nbsp;" to add a single space.
+    2. Type "&ensp;" to add 2 spaces.
+    3. Type "&emsp;" to add 4 spaces.
+    4. Use the non-breaking space (&nbsp) 4 times to insert a tab.
+    5. Use "&br" to add a line break -->
+
+  <style>
+    .accordion {
+      padding: 18px;
+      width: 100%;
+      outline: none;
+    }
+
+    .panel {
+      padding: 0 18px;
+      overflow: hidden;
+    }
+
+  </style>
+
+</head>
+
+<body class="w3-center">
+
+  <div class="w3-card-4" ng-app="main" ng-controller="mainController">
+    <div class="w3-container w3-flat-green-sea w3-card">
+      <h1><i class="fa fa-cube"></i>&ensp;The jQuery Effect</h1>
+    </div>
+
+    <!-- Form Validation
+The form will use validation to check that required fields are filled out
+
+Dynamic List
+Under the Hobbies section it will create a dynamic list -->
+
+    <div class="w3-container">
+      <p>Welcome to this jQuery powered page!</p>
+
+      <p>If we're being honest, the instructions for this assignment were pretty general (meaning vague), so I kind of just did the best I could to create a total non-sense page, which you'll experience below.</p>
+
+      <p>My first order of business is presenting you with content via an accordian made courtesy of jQuery. It's all hard-coded except for the hobbies section, which had to be dynamic.</p>
+    </div>
+
+    <button class="accordion w3-hover-teal w3-flat-green-sea w3-button"><h3>Personal</h3></button>
+    <div class="panel w3-light-grey">
+      <p>I'd like to tell you more about myself here, but this section is personal (cue joke drums)</p>
+    </div>
+
+    <button class="accordion w3-hover-teal w3-flat-turquoise w3-button"><h3>School</h3></button>
+    <div class="panel w3-light-grey">
+      <p>What's not to love about school? You pay about a month's worth of rent each semester so that you can then go to classes you didn't want to attend and then after doing that for a couple years, you get given a degree so that someone can tell
+        you that you're now overqualified for that job you wanted... No but seriously, even though I feel like a lot of my classes are a waste of time, I do actually enjoy this one, and I've even used some of the stuff I've learned at work.</p>
+    </div>
+
+    <button class="accordion w3-hover-teal w3-flat-green-sea w3-button"><h3>Hobbies</h3></button>
+    <div class="panel w3-light-grey">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>I know what you're thinking... "Wow... that lazy stupid student didn't even bother to delete the latin that was part of this template!". Well it just so happens that latin is one of my hobbies and I was giving you
+        a complement in a dead language, but now I'm sort of wishing I could take it back...</p>
+        <p>{{altHobbyContent}}</p>
+    </div>
+
+    <button class="accordion w3-hover-teal w3-flat-turquoise w3-button"><h3>Music</h3></button>
+    <div class="panel w3-light-grey">
+      <p>While I play the violin and Guitar in a sort-of-jazz band (and probably should have mentioned that in the hobby section instead of the stupid joke about speaking latin), I don't think everyone else in the class plays an instrument.
+        So I guess this section is either for saying what music you like, or making dad jokes about how you "play the radio".</p>
+    </div>
+
+    <br><br>
+
+    <form class="w3-container">
+
+      <label>Please type in some alternative content for the hobbies section</label>
+      <input class="w3-input" type="text" ng-model="altHobbiesInput">
+      <br>
+      <label>Please type your name, or a made-up name, doesn't matter...</label>
+      <input class="w3-input" type="text" ng-model="nameInput">
+
+    </form>
+
+      <br>
+
+      <div class="w3-container">
+        <h3 ng-click="checkForInput()" class="w3-button w3-round-xxlarge w3-flat-green-sea w3-hover-teal"> Validate Fields with Angularjs </h3>
+      </div>
+
+      <div id="validationWarningModal" style="display:{{displayStatus}}" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content">
+            <span ng-click="resetDisplay()" onclick="document.getElementById('validationWarningModal').style.display='none'" class="w3-button w3-display-topright w3-flat-green-sea w3-hover-light-gray">&times;</span>
+            <div class="w3-container w3-flat-green-sea">
+              <h3>So... It's come to this...</h3>
+            </div>
+            <div class="w3-container">
+              <p>Look, if you don't fill in all the fields on this page, we can't put all that crap in the hobbies section, which will make that section look like it's not dynamic, which will cause the teacher to be most displeased.</p>
+              <p>If this happens again, I'm going to have to do this whole modal popup thing again. I mean... it's not like I feel shame, I'm a computer.</p>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <script>
+    // I've done a lot of stuff with jQuery already in this class, as well as my previous
+    // classes, so I made the accordion with jQuery and then for the rest, I decided
+    // to try out AngularJS. If you'd like me to, I can certainly rewrite the
+    // button functionality in jQuery. I just wanted to learn something new
+    // with each assignment, since each one is time consuming no-matter what.
+
+    $('div.panel').hide();
+
+    $('.accordion').click(function() {
+      $(this).next().slideToggle();
+    });
+
+    var app = angular.module("main", []);
+    app.controller('mainController', function($scope) {
+      $scope.altHobbiesInput = "";
+      $scope.nameInput = "";
+      $scope.altHobbyContent = "";
+      $scope.displayStatus = "none";
+
+      $scope.resetDisplay = function() {
+        $scope.displayStatus = "none";
+      }
+
+      $scope.checkForInput = function() {
+        var returnedContent = "";
+        if ($scope.altHobbiesInput.length > 0 && $scope.nameInput.length > 0) {
+          returnedContent = $scope.nameInput + ", look at all the stuff you entered!: " + $scope.altHobbiesInput;
+        } else {
+          returnedContent = "";
+          $scope.displayStatus = "block"
+        }
+        $scope.altHobbyContent = returnedContent;
+        console.log($scope.displayStatus);
+      }
+    });
+  </script>
+
+  </div>
+
+</body>
+
+</html>
