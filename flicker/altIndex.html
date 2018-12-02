@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flickr Feed</title>
+    <link href="css/site.css" rel="stylesheet">
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        .image:hover {
+            border-color: red;
+            background-color: rgb(204,204,204);
+        }
+        .image {
+                /* float: left; */
+                padding: 20px;
+                /* border: solid 1px rgb(27,45,94); */
+                /* background-color: white; */
+                /* margin: 0 30px 30px 0; */
+            }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var URL = "https://api.flickr.com/services/feeds/groups_pool.gne?jsoncallback=?";
+            
+            var searchInfo = {
+                id : "795935@N21",
+                format : "json"
+            };
+            
+            $.getJSON(URL, searchInfo, function(data) {
+                $('h1').text(data.title);
+                var photoHTML = '';
+                
+                // console.log(data);
+                
+                let counter = 0
+
+                $.each(data.items,function(i,photo) {
+                    if (counter == 0) {
+                        counter++;
+                        photoHTML += '<div class="row"><span class="image col-xs-12 col-sm-6 col-md-4 col-lg-2">';
+                        console.log(counter + " was the value of counter. Starting new row");
+                    } else {
+                        counter++;
+                        photoHTML += '<span class="image col-xs-12 col-sm-6 col-md-4 col-lg-2">';
+                        console.log(counter + " was the value of counter - plain ran");
+                        if (counter == 4) {
+                            counter = 0;  
+                            console.log("counter reset to zero");
+                        }
+                        console.log(counter + " was the value of counter - plain ran");
+                    }
+                        photoHTML += '<a href="' + photo.link + '">';
+                            photoHTML += '<img src="' + photo.media.m.replace('_m','_s') + '"></a></span>';
+                            if (counter == 0) photoHTML += '</div>';
+                        }); // end each
+                        
+                        $('#photos').append(photoHTML);
+                        
+                    }); // end get JSON;
+                    
+                }); // end ready
+            </script>
+        </head>
+        <body>
+            <div class="wrapper">
+                <header>
+                    SciFi Flickr Images
+                </header>
+                <div class="content">
+                    <div class="main">
+                        <h1>Flickr Images</h1>
+                        <div id="photos" class="container"></div>
+                        
+                    </div>
+                </div>
+                <footer>
+                    <p>Exercise 10 for CSIS 2470, Darren Hunter</p>
+                </footer>
+            </div>
+        </body>
+        </html>
