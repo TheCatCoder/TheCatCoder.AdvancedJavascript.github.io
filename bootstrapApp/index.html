@@ -273,8 +273,54 @@
             font-weight: bold;
             color: #2F92CA;
         }
-
+        
         #tweet { margin-left: 0.5em; }
+        
+        #tweet-modal .char-count {
+            padding: 0.7rem 0;
+        }
+        
+        div#who-follow li .info .glyphicon-ok {
+            color: #5cb85c;
+        }
+        
+        #messages-modal .btn-message {
+            position: absolute;
+            right: 3em;
+            top: 0.75em;
+        }
+        
+        #messages-modal .modal-body {
+            max-height: 32rem;
+            overflow: auto;
+        }
+        
+        #messages-modal li {
+            padding: 0.75rem;
+            border-bottom: 0.1rem solid #E6E6E6;
+        }
+        
+        #messages-modal li:hover {
+            background-color: #E6E6E6;
+        }
+        
+        #messages-modal li a:hover {
+            text-decoration: none;
+        }
+        
+        #messages-modal li img {
+            max-width: 15%;
+        }
+        
+        #messages-modal .msg-content {
+            display: inline-block;
+            color: #000;
+        }
+        
+        #messages-modal .msg-content h5 {
+            font-size: 1em;
+            font-weight: bold;
+        }
         
     </style>
     
@@ -298,249 +344,243 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <button id="tweet" class="btn btn-default pull-right visible-xs-block">
-            <span class="glyphicon glyphicon-pencil" ariahidden="true"></span>Tweet</button>
+        
+    </div>
+    
+    <div id="nav-menu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="badge">8</span>
+                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    Notifications
+                </a>
+            </li>
+            <li>
+                <a href="#" role="button" data-toggle="modal" data-target="#messages-modal">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    Messages
+                </a>
+            </li>
+            
+            <!-- others elements list were hidden -->
+            <li class="visible-xs-inline">
+                <a href="#">
+                    <span class="glyphicon glyphicon-user" ariahidden="true"></span>Profile</a>
+                </li>
+                <li class="visible-xs-inline">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-off" ariahidden="true"></span>Logout</a>
+                    </li>
+                </ul>
+                
+                <div id="nav-options" class="btn-group pull-right hidden-xs">
+                    <button
+                    type="button"
+                    class="btn btn-default dropdown-toggle thumbnail"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="cpuIcon.jpg">
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#">Setting</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="#">Logout</a>
+                    </li>
+                </ul>
             </div>
             
-            <div id="nav-menu" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="badge">8</span>
-                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                            Notifications
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            Messages
-                        </a>
-                    </li>
-                    
-                    <!-- others elements list were hidden -->
-                    <li class="visible-xs-inline">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-user" ariahidden="true"></span>Profile</a>
-                        </li>
-                        <li class="visible-xs-inline">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-off" ariahidden="true"></span>Logout</a>
-                            </li>
-                        </ul>
-                        
-                        <div id="nav-options" class="btn-group pull-right hidden-xs">
-                                <button
-                                type="button"
-                                class="btn btn-default dropdown-toggle thumbnail"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                                <img src="cpuIcon.jpg">
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#">Setting</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="#">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    
-                    <form id="search" role="search" class="hidden-sm">
-                        <button id="tweet" class="btn btn-default pull-right hidden-xs">
-                            <span class="glyphicon glyphicon-pencil" ariahidden="true"></span>
-                            Tweet
-                        </button>
+            
+            <form id="search" role="search" class="hidden-sm">
+                <button id="tweet" class="btn btn-default pull-right hidden-xs data-toggle="modal" data-target="#tweet-modal">
+                    <span class="glyphicon glyphicon-pencil" ariahidden="true"></span>
+                    Tweet
+                </button>
+                
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </div>
-                    </form>
+<!-- Main Content Starts Here -->
+<div class="container">
+    <div class="row">
+        <div id="profile" class="col-md-3 hidden-sm hiddenxs" data-spy="affix" data-offset-top="0">
+            
+            <div id="profile-resume" class="card">
+                <img class="card-img-top img-responsive" src="binary.jpg">
+                <div class="card-block">
+                    <img src="cpu.jpg" class="card-img">
+                    <h4 class="card-title">Mr X86
+                        <small>@32BitsTheWay</small>
+                    </h4>
+                    <p class="card-text">I invented the matrix. Bet you're pretty jealous...</p>
+                    <ul class="list-inline list-unstyled">
+                        <li id="card-tweets">
+                            <a href="#">
+                                <span class="profile-stats">Tweets</span>
+                                <span class="profile-value">99k</span>
+                            </a>
+                        </li>
+                        <li class="card-following">
+                            <a href="#">
+                                <span class="profile-stats">Following</span>
+                                
+                                <span class="profile-value">7</span>
+                            </a>
+                        </li>
+                        <li class="card-followers">
+                            <a href="#">
+                                <span class="profile-stats">Followers</span>
+                                <span class="profile-value">132k</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </nav>
+            
+        </div>
         
-        <!-- Main Content Starts Here -->
-        <div class="container">
-            <div class="row">
-                <div id="profile" class="col-md-3 hidden-sm hiddenxs">
-                    
-                    <div id="profile-resume" class="card">
-                        <img class="card-img-top img-responsive" src="binary.jpg">
-                        <div class="card-block">
-                            <img src="cpu.jpg" class="card-img">
-                            <h4 class="card-title">Mr X86
-                                <small>@32BitsTheWay</small>
-                            </h4>
-                            <p class="card-text">I invented the matrix. Bet you're pretty jealous</p>
-                            <ul class="list-inline list-unstyled">
-                                <li id="card-tweets">
-                                    <a href="#">
-                                        <span class="profile-stats">Tweets</span>
-                                        <span class="profile-value">99k</span>
-                                    </a>
-                                </li>
-                                <li class="card-following">
-                                    <a href="#">
-                                        <span class="profile-stats">Following</span>
-                                        
-                                        <span class="profile-value">7</span>
-                                    </a>
-                                </li>
-                                <li class="card-followers">
-                                    <a href="#">
-                                        <span class="profile-stats">Followers</span>
-                                        <span class="profile-value">132k</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+        <div id="main" class="col-sm-12 col-md-6">
+            
+            <ol class="breadcrumb card">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+                <li class="active">Feed</li>
+            </ol>
+            
+            <div id="main-card" class="card">
+                
+                <form id="new-message">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="What is happening?">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-camera" ariahidden="true"></span>
+                        </span>
                     </div>
-
+                </form>
+                
+                <ul id="feed" class = "list-unstyled" ><li>
+                    <img src="oldLaptop.png" class="feed-avatar imgcircle">
+                    <div class="feed-post">
+                        <h5>Mr Behind
+                            <small>@olderCrowd</small>
+                        </h5>
+                        <p>Hey I just heard of this thing called the internet!</p>
+                    </div>
+                    <div class="action-list">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Reply">
+                            <spa class="glyphicon glyphicon-share-alt" aria-hidden = "true"> </span>
+                            </a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Retweet">
+                                <span class="glyphicon glyphicon-refresh " aria-hidden="true"></span>
+                                <span class="retweet-count">6</span></a><a href="#" data-toggle="tooltip" data-placement="bottom" title="Start"><span class="glyphicon glyphicon-star" ariahidden="true"></span ></a>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <img src="macbookAir.png" class="feed-avatar imgcircle">
+                                <div class="feed-post">
+                                    <h5>Mr Premium
+                                        <small>@appleChild</small>
+                                    </h5>
+                                    <p>I don't know why, but I always just feel so luxerious!</p>
+                                </div>
+                                <div class="action-list">
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Reply">
+                                        <span class="glyphicon glyphicon-share-alt" ariahidden="true"></span>
+                                    </a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Retweet">
+                                        <span class="glyphicon glyphicon-refresh" ariahidden="true"></span>
+                                        <span class="retweet-count">6</span>
+                                    </a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Star">
+                                        <span class="glyphicon glyphicon-star" ariahidden="true"></span>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <nav class="text-center">   
+                        <ul class="pagination pagination-lg">
+                            <li class = "disabled" > <a href="#" arialabel="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1
+                                <span class="sronly">(current)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#">...</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span ariahidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul> </nav>
+                    
+                    
+                    
                 </div>
                 
-                <div id="main" class="col-sm-12 col-md-6">
-                    
-                    <ol class="breadcrumb card">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li class="active">Feed</li>
-                    </ol>
-                    
-                    <div id="main-card" class="card">
+                <div id="right-content" class="col-md-3 hidden-sm hidden-xs">
+                    <div id="who-follow" class="card">
                         
-                        <form id="new-message">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="What is happening?">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-camera" ariahidden="true"></span>
-                                </span>
-                            </div>
-                        </form>
-                        
-                        <ul id = "feed" class = "list-unstyled" ><li>
-                            <img src="oldLaptop.png" class="feed-avatar imgcircle">
-                            <div class="feed-post">
-                                <h5>Mr Behind
-                                    <small>@olderCrowd</small>
-                                </h5>
-                                <p>Hey I just heard of this thing called the internet!</p>
-                            </div>
-                            <div class="action-list">
-                                <a href="#">
-                                    <spa class="glyphicon glyphicon-share-alt" aria-hidden = "true"> </span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="glyphicon glyphicon-refresh " aria-hidden="true"></span>
-                                        <span class="retweet-count">6</span></a><a href="#"><span class="glyphicon glyphicon-star" ariahidden="true"></span ></a>
-                                        </div>
-                                    </li>
-                                    
-                                    <li>
-                                        <img src="macbookAir.png" class="feed-avatar imgcircle">
-                                        <div class="feed-post">
-                                            <h5>Mr Premium
-                                                <small>@appleChild</small>
-                                            </h5>
-                                            <p>I don't know why, but I always just feel so luxerious!</p>
-                                        </div>
-                                        <div class="action-list">
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-share-alt" ariahidden="true"></span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-refresh" ariahidden="true"></span>
-                                                <span class="retweet-count">6</span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="glyphicon glyphicon-star" ariahidden="true"></span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                            
-                            <nav class="text-center">   
-                                <ul class="pagination pagination-lg">
-                                    <li class = "disabled" > <a href="#" arialabel="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">1
-                                        <span class="sronly">(current)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li class="disabled">
-                                    <a href="#">...</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span ariahidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul> </nav>
-                            
-                            
-                            
+                        <div class="card-header">
+                            Who to follow
                         </div>
+                        <div class="card-block"></div>
                         
-                        <div id="right-content" class="col-md-3 hidden-sm hidden-xs">
-                            <div id="who-follow" class="card">
-                                
-                                
-                                <div class="card-header">
-                                    Who to follow
-                                </div>
-                                <div class="card-block"></div>
-                                
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <img width="50" height="60" src="oldMonitor.jpg" class="img-rounded">
-                                        <div class="info">
-                                            <strong>Old CRT</strong>
-                                            <button class="btn btn-default">
-                                                <span class="glyphicon glyphicon-plus" ariahidden="true"></span>
-                                                Follow
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img width="50" height="60" src="iphone.png" class="img-rounded">
-                                        <div class="info">
-                                            <strong>New Kid</strong>
-                                            <button class="btn btn-default">
-                                                <span class="glyphicon glyphicon-plus" ariahidden="true"></span>
-                                                Follow
-                                            </button>
+                        <ul class="list-unstyled">
+                            <li>
+                                <img width="50" height="60" src="oldMonitor.jpg" class="img-rounded">
+                                <div class="info">
+                                    <strong>Old CRT</strong>
+                                    <a href="#" role="button" tabindex="-1" class="btn btn-default" data-toggle="popover" data-trigger="focus" title="You may want to follow">
+                                        <span class="glyphicon glyphicon-plus" ariahidden="true"></span> Follow</a>   
+                                    </div>
+                                </li>
+                                <li>
+                                    <img width="50" height="60" src="iphone.png" class="img-rounded">
+                                    <div class="info">
+                                        <strong>New Kid</strong>
+                                        <a href="#" role="button" tabindex="-1" class="btn btn-default" data-toggle="popover" data-trigger="focus" title="You may want to follow">
+                                            <span class="glyphicon glyphicon-plus" ariahidden="true"></span> Follow</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -578,6 +618,143 @@
                     </div>
                 </div>
                 
-                <body></body>
+                <!-- Status Modal -->
+                <div class="modal fade" id="tweet-modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Hello Computer</h4>
+                            </div>
+                            <div class="modal-body">
+                                <textarea class="form-control" rows="4" placeholder="Please log your status variable to this app" maxlength="140"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <span class="char-count pull-left" data-max="140">140</span>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    Post
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                </html>
+                <!-- Messages Modal -->
+                <div id="messages-modal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Binary Messages</h4>
+                                <button type="button" class="btn btn-primary btn-message">New message</button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="#">
+                                            <img src="oldLaptop.png" class="img-circle">
+                                            <div class="msg-content">
+                                                <h5>Mr Behind <small>@olderCrowd </small></h5>
+                                                <p>So did you compute anything fun during the holidays?</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="commodore.jpeg" class="img-circle">
+                                            <div class="msg-content">
+                                                <h5>CommDore <small>@notSoCommonAnymore </small></h5>
+                                                <p>My owner wrote another terminal program...</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="iphone.png" class="img-circle">
+                                            <div class="msg-content">
+                                                <h5>New Kid <small>@everyoneHasMe </small></h5>
+                                                <p>I had to display YouTube videos the whole time!</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="g3.JPG" class="img-circle">
+                                            <div class="msg-content">
+                                                <h5>G3 <small>@theThirdG </small></h5>
+                                                <p>Shouldn't this conversation be happening in binary?</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    
+                    $(document).ready(function() {
+                        $('[data-toggle="tooltip"]').tooltip();
+                        
+                        var popoverContentTemplate = '' +
+                        '<img src="powerpc.jpg" class="img-rounded">' +
+                        '<div class="info">' +
+                            '<strong>Power PCs</strong>' +
+                            '<a href="#" class="btn btn-default">' +
+                                '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>' +
+                                ' Follow' +
+                                '</a>' +
+                                '</div>';
+                                
+                                $('[data-toggle="popover"]').popover({
+                                    placement: 'bottom',
+                                    html: true,
+                                    content: function() {
+                                        return popoverContentTemplate;
+                                    }
+                                });
+                                
+                                $('[data-toggle="popover"]').on('show.bs.popover', function() {
+                                    var $icon = $(this).find('span.glyphicon');
+                                    
+                                    $icon.removeClass('glyphicon-plus').addClass('glyphicon-ok');
+                                    $(this).append('ing');
+                                });
+                                
+                                $('#tweet-modal').modal();
+                                
+                                var $charCount, maxCharCount;
+                                
+                                $charCount = $('#tweet-modal .char-count')
+                                maxCharCount = parseInt($charCount.data('max'), 10);
+                                
+                                $('#tweet-modal textarea').on('keyup', function(e) {
+                                    var tweetLength = $(e.currentTarget).val().length;
+                                    
+                                    $charCount.html(maxCharCount - tweetLength);
+                                });
+                                
+                                $('#profile').on('affix.bs.affix', function() {
+                                    $(this).width($(this).width() - 1);
+                                    $('#main').addClass('col-md-offset-3');
+                                }).on('affix-top.bs.affix', function() {
+                                    $(this).css('width', '');
+                                    $('#main').removeClass('col-md-offset-3');
+                                });
+                                
+                            });
+                            
+                            
+                        </script>
+                        
+                        <body></body>
+                        
+                        </html>
